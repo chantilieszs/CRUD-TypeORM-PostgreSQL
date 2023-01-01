@@ -25,4 +25,16 @@ const userWithoutPasswordSerializer: SchemaOf<IUserResponse> = yup.object().shap
     updatedAt: yup.date().notRequired()
 })
 
-export  { userSerializer, updateUserSerializer, userWithoutPasswordSerializer };
+const listUserWithoutPasswordSerializer: SchemaOf<IUserResponse> = yup.object().shape({
+    id: yup.string().notRequired(),
+    name: yup.string().notRequired(),
+    email: yup.string().notRequired(),
+    isAdm: yup.boolean().notRequired(),
+    isActive: yup.boolean().notRequired(),
+    createdAt: yup.date().notRequired(),
+    updatedAt: yup.date().notRequired()
+})
+
+const listUsersNoPass = yup.array(listUserWithoutPasswordSerializer)
+
+export  { userSerializer, updateUserSerializer, userWithoutPasswordSerializer, listUsersNoPass };
